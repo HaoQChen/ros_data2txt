@@ -1,0 +1,19 @@
+<launch>
+    <node name="imu2txt" pkg="ros_data2txt" type="imu2txt" respawn="false" output="screen" >
+        <param name="file_name"         type="string" value="/home/night_fury/Documents/record_bags/calibration/imudata_to_wall.txt"/>
+        <param name="topic_name"         type="string" value="/imu9250_node/imu"/>  
+    </node>
+
+    <node name="odom2txt" pkg="ros_data2txt" type="odom2txt" respawn="false" output="screen" >
+        <param name="file_name"         type="string" value="/home/night_fury/Documents/record_bags/calibration/odom_robot_data_to_wall.txt"/>
+        <param name="topic_name"         type="string" value="/odom_robot"/>  
+    </node>
+
+    <node name="laser_scan2txt" pkg="ros_data2txt" type="laser_scan2txt" respawn="false" output="screen" >
+        <param name="file_name"         type="string" value="/home/night_fury/Documents/record_bags/calibration/laser_scan_data_to_wall.txt"/>
+        <param name="topic_name"         type="string" value="/scan"/>  
+    </node>
+
+    <node name="playbag" pkg="rosbag" type="play"
+      args="--clock /home/night_fury/Documents/record_bags/calibration/to_wall.bag" />
+</launch>
